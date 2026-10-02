@@ -26,8 +26,10 @@ mixin _$Inspection {
   String get customerId => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String? get notes => throw _privateConstructorUsedError;
-  @JsonKey(name: 'scheduled_at')
-  DateTime? get scheduledAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'scheduled_from')
+  DateTime? get scheduledFrom => throw _privateConstructorUsedError;
+  @JsonKey(name: 'scheduled_to')
+  DateTime? get scheduledTo => throw _privateConstructorUsedError;
   String get status =>
       throw _privateConstructorUsedError; // scheduled | done | no_contract
   @JsonKey(name: 'created_at')
@@ -55,7 +57,8 @@ abstract class $InspectionCopyWith<$Res> {
     @JsonKey(name: 'customer_id') String customerId,
     String address,
     String? notes,
-    @JsonKey(name: 'scheduled_at') DateTime? scheduledAt,
+    @JsonKey(name: 'scheduled_from') DateTime? scheduledFrom,
+    @JsonKey(name: 'scheduled_to') DateTime? scheduledTo,
     String status,
     @JsonKey(name: 'created_at') DateTime? createdAt,
   });
@@ -80,7 +83,8 @@ class _$InspectionCopyWithImpl<$Res, $Val extends Inspection>
     Object? customerId = null,
     Object? address = null,
     Object? notes = freezed,
-    Object? scheduledAt = freezed,
+    Object? scheduledFrom = freezed,
+    Object? scheduledTo = freezed,
     Object? status = null,
     Object? createdAt = freezed,
   }) {
@@ -102,9 +106,13 @@ class _$InspectionCopyWithImpl<$Res, $Val extends Inspection>
                 ? _value.notes
                 : notes // ignore: cast_nullable_to_non_nullable
                       as String?,
-            scheduledAt: freezed == scheduledAt
-                ? _value.scheduledAt
-                : scheduledAt // ignore: cast_nullable_to_non_nullable
+            scheduledFrom: freezed == scheduledFrom
+                ? _value.scheduledFrom
+                : scheduledFrom // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            scheduledTo: freezed == scheduledTo
+                ? _value.scheduledTo
+                : scheduledTo // ignore: cast_nullable_to_non_nullable
                       as DateTime?,
             status: null == status
                 ? _value.status
@@ -134,7 +142,8 @@ abstract class _$$InspectionImplCopyWith<$Res>
     @JsonKey(name: 'customer_id') String customerId,
     String address,
     String? notes,
-    @JsonKey(name: 'scheduled_at') DateTime? scheduledAt,
+    @JsonKey(name: 'scheduled_from') DateTime? scheduledFrom,
+    @JsonKey(name: 'scheduled_to') DateTime? scheduledTo,
     String status,
     @JsonKey(name: 'created_at') DateTime? createdAt,
   });
@@ -158,7 +167,8 @@ class __$$InspectionImplCopyWithImpl<$Res>
     Object? customerId = null,
     Object? address = null,
     Object? notes = freezed,
-    Object? scheduledAt = freezed,
+    Object? scheduledFrom = freezed,
+    Object? scheduledTo = freezed,
     Object? status = null,
     Object? createdAt = freezed,
   }) {
@@ -180,9 +190,13 @@ class __$$InspectionImplCopyWithImpl<$Res>
             ? _value.notes
             : notes // ignore: cast_nullable_to_non_nullable
                   as String?,
-        scheduledAt: freezed == scheduledAt
-            ? _value.scheduledAt
-            : scheduledAt // ignore: cast_nullable_to_non_nullable
+        scheduledFrom: freezed == scheduledFrom
+            ? _value.scheduledFrom
+            : scheduledFrom // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        scheduledTo: freezed == scheduledTo
+            ? _value.scheduledTo
+            : scheduledTo // ignore: cast_nullable_to_non_nullable
                   as DateTime?,
         status: null == status
             ? _value.status
@@ -205,7 +219,8 @@ class _$InspectionImpl implements _Inspection {
     @JsonKey(name: 'customer_id') required this.customerId,
     required this.address,
     this.notes,
-    @JsonKey(name: 'scheduled_at') this.scheduledAt,
+    @JsonKey(name: 'scheduled_from') this.scheduledFrom,
+    @JsonKey(name: 'scheduled_to') this.scheduledTo,
     this.status = 'scheduled',
     @JsonKey(name: 'created_at') this.createdAt,
   });
@@ -223,8 +238,11 @@ class _$InspectionImpl implements _Inspection {
   @override
   final String? notes;
   @override
-  @JsonKey(name: 'scheduled_at')
-  final DateTime? scheduledAt;
+  @JsonKey(name: 'scheduled_from')
+  final DateTime? scheduledFrom;
+  @override
+  @JsonKey(name: 'scheduled_to')
+  final DateTime? scheduledTo;
   @override
   @JsonKey()
   final String status;
@@ -235,7 +253,7 @@ class _$InspectionImpl implements _Inspection {
 
   @override
   String toString() {
-    return 'Inspection(id: $id, customerId: $customerId, address: $address, notes: $notes, scheduledAt: $scheduledAt, status: $status, createdAt: $createdAt)';
+    return 'Inspection(id: $id, customerId: $customerId, address: $address, notes: $notes, scheduledFrom: $scheduledFrom, scheduledTo: $scheduledTo, status: $status, createdAt: $createdAt)';
   }
 
   @override
@@ -248,8 +266,10 @@ class _$InspectionImpl implements _Inspection {
                 other.customerId == customerId) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.notes, notes) || other.notes == notes) &&
-            (identical(other.scheduledAt, scheduledAt) ||
-                other.scheduledAt == scheduledAt) &&
+            (identical(other.scheduledFrom, scheduledFrom) ||
+                other.scheduledFrom == scheduledFrom) &&
+            (identical(other.scheduledTo, scheduledTo) ||
+                other.scheduledTo == scheduledTo) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
@@ -263,7 +283,8 @@ class _$InspectionImpl implements _Inspection {
     customerId,
     address,
     notes,
-    scheduledAt,
+    scheduledFrom,
+    scheduledTo,
     status,
     createdAt,
   );
@@ -288,7 +309,8 @@ abstract class _Inspection implements Inspection {
     @JsonKey(name: 'customer_id') required final String customerId,
     required final String address,
     final String? notes,
-    @JsonKey(name: 'scheduled_at') final DateTime? scheduledAt,
+    @JsonKey(name: 'scheduled_from') final DateTime? scheduledFrom,
+    @JsonKey(name: 'scheduled_to') final DateTime? scheduledTo,
     final String status,
     @JsonKey(name: 'created_at') final DateTime? createdAt,
   }) = _$InspectionImpl;
@@ -306,8 +328,11 @@ abstract class _Inspection implements Inspection {
   @override
   String? get notes;
   @override
-  @JsonKey(name: 'scheduled_at')
-  DateTime? get scheduledAt;
+  @JsonKey(name: 'scheduled_from')
+  DateTime? get scheduledFrom;
+  @override
+  @JsonKey(name: 'scheduled_to')
+  DateTime? get scheduledTo;
   @override
   String get status; // scheduled | done | no_contract
   @override

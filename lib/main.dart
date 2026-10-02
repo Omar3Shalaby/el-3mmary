@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart'; // 1. استيراد المكتبة
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:el_3mmary/core/router/app_router.dart';
@@ -15,7 +16,6 @@ Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-/// Global accessor for the Supabase client.
 final supabase = Supabase.instance.client;
 
 class MyApp extends ConsumerWidget {
@@ -28,9 +28,23 @@ class MyApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'العماري',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      themeMode: ThemeMode.light,
+      
+      // --- إعدادات اللغة العربية (RTL) ---
+      locale: const Locale('ar'), // تحديد لغة التطبيق كعربية
+      supportedLocales: const [
+        Locale('ar'), // دعم اللغة العربية فقط
+      ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      // ---------------------------------
+
+     
+      // إذا كنت تريد إجبار التطبيق على الوضع الفاتح دائماً كما في التصميم:
+      theme: AppTheme.lightTheme,
+      themeMode: ThemeMode.light, 
       routerConfig: router,
     );
   }

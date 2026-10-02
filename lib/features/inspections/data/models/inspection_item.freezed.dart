@@ -27,6 +27,8 @@ mixin _$InspectionItem {
   @JsonKey(name: 'item_name')
   String get itemName => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
 
   /// Serializes this InspectionItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,6 +52,8 @@ abstract class $InspectionItemCopyWith<$Res> {
     @JsonKey(name: 'inspection_id') String inspectionId,
     @JsonKey(name: 'item_name') String itemName,
     double price,
+    int quantity,
+    String? description,
   });
 }
 
@@ -72,6 +76,8 @@ class _$InspectionItemCopyWithImpl<$Res, $Val extends InspectionItem>
     Object? inspectionId = null,
     Object? itemName = null,
     Object? price = null,
+    Object? quantity = null,
+    Object? description = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -91,6 +97,14 @@ class _$InspectionItemCopyWithImpl<$Res, $Val extends InspectionItem>
                 ? _value.price
                 : price // ignore: cast_nullable_to_non_nullable
                       as double,
+            quantity: null == quantity
+                ? _value.quantity
+                : quantity // ignore: cast_nullable_to_non_nullable
+                      as int,
+            description: freezed == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -111,6 +125,8 @@ abstract class _$$InspectionItemImplCopyWith<$Res>
     @JsonKey(name: 'inspection_id') String inspectionId,
     @JsonKey(name: 'item_name') String itemName,
     double price,
+    int quantity,
+    String? description,
   });
 }
 
@@ -132,6 +148,8 @@ class __$$InspectionItemImplCopyWithImpl<$Res>
     Object? inspectionId = null,
     Object? itemName = null,
     Object? price = null,
+    Object? quantity = null,
+    Object? description = freezed,
   }) {
     return _then(
       _$InspectionItemImpl(
@@ -151,6 +169,14 @@ class __$$InspectionItemImplCopyWithImpl<$Res>
             ? _value.price
             : price // ignore: cast_nullable_to_non_nullable
                   as double,
+        quantity: null == quantity
+            ? _value.quantity
+            : quantity // ignore: cast_nullable_to_non_nullable
+                  as int,
+        description: freezed == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
@@ -164,6 +190,8 @@ class _$InspectionItemImpl implements _InspectionItem {
     @JsonKey(name: 'inspection_id') required this.inspectionId,
     @JsonKey(name: 'item_name') required this.itemName,
     required this.price,
+    this.quantity = 1,
+    this.description,
   });
 
   factory _$InspectionItemImpl.fromJson(Map<String, dynamic> json) =>
@@ -179,10 +207,15 @@ class _$InspectionItemImpl implements _InspectionItem {
   final String itemName;
   @override
   final double price;
+  @override
+  @JsonKey()
+  final int quantity;
+  @override
+  final String? description;
 
   @override
   String toString() {
-    return 'InspectionItem(id: $id, inspectionId: $inspectionId, itemName: $itemName, price: $price)';
+    return 'InspectionItem(id: $id, inspectionId: $inspectionId, itemName: $itemName, price: $price, quantity: $quantity, description: $description)';
   }
 
   @override
@@ -195,13 +228,24 @@ class _$InspectionItemImpl implements _InspectionItem {
                 other.inspectionId == inspectionId) &&
             (identical(other.itemName, itemName) ||
                 other.itemName == itemName) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, inspectionId, itemName, price);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    inspectionId,
+    itemName,
+    price,
+    quantity,
+    description,
+  );
 
   /// Create a copy of InspectionItem
   /// with the given fields replaced by the non-null parameter values.
@@ -226,6 +270,8 @@ abstract class _InspectionItem implements InspectionItem {
     @JsonKey(name: 'inspection_id') required final String inspectionId,
     @JsonKey(name: 'item_name') required final String itemName,
     required final double price,
+    final int quantity,
+    final String? description,
   }) = _$InspectionItemImpl;
 
   factory _InspectionItem.fromJson(Map<String, dynamic> json) =
@@ -241,6 +287,10 @@ abstract class _InspectionItem implements InspectionItem {
   String get itemName;
   @override
   double get price;
+  @override
+  int get quantity;
+  @override
+  String? get description;
 
   /// Create a copy of InspectionItem
   /// with the given fields replaced by the non-null parameter values.

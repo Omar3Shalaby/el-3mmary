@@ -32,7 +32,8 @@ class InspectionRepository {
     required String customerId,
     required String address,
     String? notes,
-    DateTime? scheduledAt,
+    DateTime? scheduledFrom,
+    DateTime? scheduledTo,
   }) async {
     final row = await _service
         .from(_table)
@@ -40,8 +41,10 @@ class InspectionRepository {
           'customer_id': customerId,
           'address': address,
           if (notes != null) 'notes': notes,
-          if (scheduledAt != null)
-            'scheduled_at': scheduledAt.toIso8601String(),
+          if (scheduledFrom != null)
+            'scheduled_from': scheduledFrom.toIso8601String(),
+          if (scheduledTo != null)
+            'scheduled_to': scheduledTo.toIso8601String(),
         })
         .select()
         .single();
@@ -74,6 +77,8 @@ class InspectionRepository {
     required String inspectionId,
     required String itemName,
     required double price,
+    int quantity = 1,
+    String? description,
   }) async {
     final row = await _service
         .from(_itemsTable)
@@ -81,6 +86,8 @@ class InspectionRepository {
           'inspection_id': inspectionId,
           'item_name': itemName,
           'price': price,
+          'quantity': quantity,
+          if (description != null) 'description': description,
         })
         .select()
         .single();

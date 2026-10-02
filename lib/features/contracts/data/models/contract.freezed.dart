@@ -30,6 +30,10 @@ mixin _$Contract {
   DateTime? get deliveryDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'pickup_date')
   DateTime? get pickupDate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'pickup_address')
+  String? get pickupAddress => throw _privateConstructorUsedError;
+  @JsonKey(name: 'delivery_address')
+  String? get deliveryAddress => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError; // active | cancelled
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -55,6 +59,8 @@ abstract class $ContractCopyWith<$Res> {
     @JsonKey(name: 'customer_id') String customerId,
     @JsonKey(name: 'delivery_date') DateTime? deliveryDate,
     @JsonKey(name: 'pickup_date') DateTime? pickupDate,
+    @JsonKey(name: 'pickup_address') String? pickupAddress,
+    @JsonKey(name: 'delivery_address') String? deliveryAddress,
     String status,
     @JsonKey(name: 'created_at') DateTime? createdAt,
   });
@@ -80,6 +86,8 @@ class _$ContractCopyWithImpl<$Res, $Val extends Contract>
     Object? customerId = null,
     Object? deliveryDate = freezed,
     Object? pickupDate = freezed,
+    Object? pickupAddress = freezed,
+    Object? deliveryAddress = freezed,
     Object? status = null,
     Object? createdAt = freezed,
   }) {
@@ -105,6 +113,14 @@ class _$ContractCopyWithImpl<$Res, $Val extends Contract>
                 ? _value.pickupDate
                 : pickupDate // ignore: cast_nullable_to_non_nullable
                       as DateTime?,
+            pickupAddress: freezed == pickupAddress
+                ? _value.pickupAddress
+                : pickupAddress // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            deliveryAddress: freezed == deliveryAddress
+                ? _value.deliveryAddress
+                : deliveryAddress // ignore: cast_nullable_to_non_nullable
+                      as String?,
             status: null == status
                 ? _value.status
                 : status // ignore: cast_nullable_to_non_nullable
@@ -134,6 +150,8 @@ abstract class _$$ContractImplCopyWith<$Res>
     @JsonKey(name: 'customer_id') String customerId,
     @JsonKey(name: 'delivery_date') DateTime? deliveryDate,
     @JsonKey(name: 'pickup_date') DateTime? pickupDate,
+    @JsonKey(name: 'pickup_address') String? pickupAddress,
+    @JsonKey(name: 'delivery_address') String? deliveryAddress,
     String status,
     @JsonKey(name: 'created_at') DateTime? createdAt,
   });
@@ -158,6 +176,8 @@ class __$$ContractImplCopyWithImpl<$Res>
     Object? customerId = null,
     Object? deliveryDate = freezed,
     Object? pickupDate = freezed,
+    Object? pickupAddress = freezed,
+    Object? deliveryAddress = freezed,
     Object? status = null,
     Object? createdAt = freezed,
   }) {
@@ -183,6 +203,14 @@ class __$$ContractImplCopyWithImpl<$Res>
             ? _value.pickupDate
             : pickupDate // ignore: cast_nullable_to_non_nullable
                   as DateTime?,
+        pickupAddress: freezed == pickupAddress
+            ? _value.pickupAddress
+            : pickupAddress // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        deliveryAddress: freezed == deliveryAddress
+            ? _value.deliveryAddress
+            : deliveryAddress // ignore: cast_nullable_to_non_nullable
+                  as String?,
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
@@ -205,6 +233,8 @@ class _$ContractImpl implements _Contract {
     @JsonKey(name: 'customer_id') required this.customerId,
     @JsonKey(name: 'delivery_date') this.deliveryDate,
     @JsonKey(name: 'pickup_date') this.pickupDate,
+    @JsonKey(name: 'pickup_address') this.pickupAddress,
+    @JsonKey(name: 'delivery_address') this.deliveryAddress,
     this.status = 'active',
     @JsonKey(name: 'created_at') this.createdAt,
   });
@@ -227,6 +257,12 @@ class _$ContractImpl implements _Contract {
   @JsonKey(name: 'pickup_date')
   final DateTime? pickupDate;
   @override
+  @JsonKey(name: 'pickup_address')
+  final String? pickupAddress;
+  @override
+  @JsonKey(name: 'delivery_address')
+  final String? deliveryAddress;
+  @override
   @JsonKey()
   final String status;
   // active | cancelled
@@ -236,7 +272,7 @@ class _$ContractImpl implements _Contract {
 
   @override
   String toString() {
-    return 'Contract(id: $id, inspectionId: $inspectionId, customerId: $customerId, deliveryDate: $deliveryDate, pickupDate: $pickupDate, status: $status, createdAt: $createdAt)';
+    return 'Contract(id: $id, inspectionId: $inspectionId, customerId: $customerId, deliveryDate: $deliveryDate, pickupDate: $pickupDate, pickupAddress: $pickupAddress, deliveryAddress: $deliveryAddress, status: $status, createdAt: $createdAt)';
   }
 
   @override
@@ -253,6 +289,10 @@ class _$ContractImpl implements _Contract {
                 other.deliveryDate == deliveryDate) &&
             (identical(other.pickupDate, pickupDate) ||
                 other.pickupDate == pickupDate) &&
+            (identical(other.pickupAddress, pickupAddress) ||
+                other.pickupAddress == pickupAddress) &&
+            (identical(other.deliveryAddress, deliveryAddress) ||
+                other.deliveryAddress == deliveryAddress) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
@@ -267,6 +307,8 @@ class _$ContractImpl implements _Contract {
     customerId,
     deliveryDate,
     pickupDate,
+    pickupAddress,
+    deliveryAddress,
     status,
     createdAt,
   );
@@ -292,6 +334,8 @@ abstract class _Contract implements Contract {
     @JsonKey(name: 'customer_id') required final String customerId,
     @JsonKey(name: 'delivery_date') final DateTime? deliveryDate,
     @JsonKey(name: 'pickup_date') final DateTime? pickupDate,
+    @JsonKey(name: 'pickup_address') final String? pickupAddress,
+    @JsonKey(name: 'delivery_address') final String? deliveryAddress,
     final String status,
     @JsonKey(name: 'created_at') final DateTime? createdAt,
   }) = _$ContractImpl;
@@ -313,6 +357,12 @@ abstract class _Contract implements Contract {
   @override
   @JsonKey(name: 'pickup_date')
   DateTime? get pickupDate;
+  @override
+  @JsonKey(name: 'pickup_address')
+  String? get pickupAddress;
+  @override
+  @JsonKey(name: 'delivery_address')
+  String? get deliveryAddress;
   @override
   String get status; // active | cancelled
   @override

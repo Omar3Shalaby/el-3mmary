@@ -31,6 +31,8 @@ class ContractRepository {
     required String customerId,
     DateTime? deliveryDate,
     DateTime? pickupDate,
+    String? pickupAddress,
+    String? deliveryAddress,
   }) async {
     final row = await _service
         .from(_table)
@@ -41,6 +43,8 @@ class ContractRepository {
             'delivery_date': deliveryDate.toIso8601String().split('T').first,
           if (pickupDate != null)
             'pickup_date': pickupDate.toIso8601String().split('T').first,
+          if (pickupAddress != null) 'pickup_address': pickupAddress,
+          if (deliveryAddress != null) 'delivery_address': deliveryAddress,
         })
         .select()
         .single();

@@ -10,11 +10,20 @@ class CustomerRepository {
   static const _table = 'customers';
   static const _phonesTable = 'customer_phones';
 
-  /// Fetch all customers.
+  /// Fetch all customers with their phone numbers.
   Future<List<Customer>> getAll() async {
-    final data = await _service.from(_table).select().order('created_at');
+    final data = await _service
+        .from(_table)
+        .select('*, customer_phones(phone_number)')
+        .order('created_at');
 
-    return data.map((json) => Customer.fromJson(json)).toList();
+    return data.map((json) {
+      final phones = (json['customer_phones'] as List?)
+              ?.map((e) => e['phone_number'] as String)
+              .toList() ??
+          [];
+      return Customer.fromJson({...json, 'phones': phones});
+    }).toList();
   }
 
   /// Fetch a single customer by ID, including their phone numbers.

@@ -24,7 +24,7 @@ mixin _$Customer {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
-  DateTime? get createdAt => throw _privateConstructorUsedError; // Nested list populated via Supabase joins
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   List<String> get phones => throw _privateConstructorUsedError;
 
   /// Serializes this Customer to a JSON map.
@@ -173,9 +173,7 @@ class _$CustomerImpl implements _Customer {
   @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
-  // Nested list populated via Supabase joins
   final List<String> _phones;
-  // Nested list populated via Supabase joins
   @override
   @JsonKey()
   List<String> get phones {
@@ -242,7 +240,7 @@ abstract class _Customer implements Customer {
   String get name;
   @override
   @JsonKey(name: 'created_at')
-  DateTime? get createdAt; // Nested list populated via Supabase joins
+  DateTime? get createdAt;
   @override
   List<String> get phones;
 

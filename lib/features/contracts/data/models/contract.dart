@@ -11,6 +11,8 @@ abstract class Contract with _$Contract {
     @JsonKey(name: 'customer_id') required String customerId,
     @JsonKey(name: 'delivery_date') DateTime? deliveryDate,
     @JsonKey(name: 'pickup_date') DateTime? pickupDate,
+    @JsonKey(name: 'pickup_address') String? pickupAddress,
+    @JsonKey(name: 'delivery_address') String? deliveryAddress,
     @Default('active') String status, // active | cancelled
     @JsonKey(name: 'created_at') DateTime? createdAt,
   }) = _Contract;

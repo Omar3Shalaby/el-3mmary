@@ -10,7 +10,8 @@ abstract class Inspection with _$Inspection {
     @JsonKey(name: 'customer_id') required String customerId,
     required String address,
     String? notes,
-    @JsonKey(name: 'scheduled_at') DateTime? scheduledAt,
+    @JsonKey(name: 'scheduled_from') DateTime? scheduledFrom,
+    @JsonKey(name: 'scheduled_to') DateTime? scheduledTo,
     @Default('scheduled') String status, // scheduled | done | no_contract
     @JsonKey(name: 'created_at') DateTime? createdAt,
   }) = _Inspection;

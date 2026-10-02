@@ -17,6 +17,8 @@ _$ContractImpl _$$ContractImplFromJson(Map<String, dynamic> json) =>
       pickupDate: json['pickup_date'] == null
           ? null
           : DateTime.parse(json['pickup_date'] as String),
+      pickupAddress: json['pickup_address'] as String?,
+      deliveryAddress: json['delivery_address'] as String?,
       status: json['status'] as String? ?? 'active',
       createdAt: json['created_at'] == null
           ? null
@@ -30,6 +32,8 @@ Map<String, dynamic> _$$ContractImplToJson(_$ContractImpl instance) =>
       'customer_id': instance.customerId,
       'delivery_date': instance.deliveryDate?.toIso8601String(),
       'pickup_date': instance.pickupDate?.toIso8601String(),
+      'pickup_address': instance.pickupAddress,
+      'delivery_address': instance.deliveryAddress,
       'status': instance.status,
       'created_at': instance.createdAt?.toIso8601String(),
     };
